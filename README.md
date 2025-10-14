@@ -1,4 +1,4 @@
-# Car Color Detection & Counting Project
+# 🕵Car Color Detection & Counting Project 🚗🚙
 This project is an advanced object detection model that identifies cars in traffic, classifies them by color, and provides a total count. The application is built with Python and features a simple graphical user interface (GUI) for ease of use.
 
 ## 📝 Problem Statement
@@ -27,10 +27,15 @@ For each car detected, the area within its bounding box is cropped. This cropped
 ### GUI & Visualization: 
 The application is built with Tkinter, Python's standard GUI library. It provides a user-friendly interface to load an image and view the original and processed versions side-by-side. OpenCV is used to draw the final colored rectangles and labels on the output image.
 
-### Results & Visualizations
+### Results & Visualizations:
 The final output clearly displays the detected cars with colored bounding boxes and labels indicating their color classification, along with a total car count in the top-left corner.
 
-(You should add a screenshot of your application running here.)
+#### Sample data->
+![Sample data](sample_data/7.jpg)
+#### GUI->
+![GUI](gui/gui.png)
+#### Result and Prediction->
+![result](result/r1.png)
 
 ## 🚀 How to Run the Project
 ### Clone the Repository:
@@ -56,4 +61,3 @@ python main_app.py
 ├── yolov8n.pt            # pre-trained model to scan the input image
 ├── requirements.txt      # List of Python dependencies for the project
 └── README.md             # You are here!
-```"# car-color-detector" 
