@@ -51,7 +51,7 @@ The final output clearly displays the detected cars with colored bounding boxes 
 Since the model uses a pre-trained YOLOv8n for detection and a rule-based approach for color classification, evaluation is based on detection accuracy and color classification accuracy.
 
 ### Color Classification Metrics (on sample data):
-Assuming evaluation on a test set, here is classification report:
+here is classification report:
 
 ![report](/evaluation%20result/classifiication_report.png)
 
