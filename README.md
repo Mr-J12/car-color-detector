@@ -34,8 +34,8 @@ The final output clearly displays the detected cars with colored bounding boxes 
 ![Sample data](sample_data/7.jpg)
 #### GUI->
 ![GUI](gui/gui.png)
-#### Result and Prediction->
-![result](result/r1.png)
+#### Result->
+![result](/evaluation%20result/eval_7.jpg)
 
 ## 🤖 Model Details
 
