@@ -76,7 +76,7 @@ def to_pil_image(bgr_img):
 
 def main():
     st.set_page_config(page_title='CCDC-X', page_icon='🚗', layout='wide')
-    st.title('🚗🔵Car Color Detector & Counter🔵🚗')
+    st.title('Car Color Detector & Counter')
 
     model = load_model()
 
