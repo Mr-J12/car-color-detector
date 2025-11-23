@@ -57,20 +57,20 @@ def process_frame(frame, model, threshold=0.15):
                     rect_color = (255, 0, 0)
                     label = 'Other Car'
                 cv2.rectangle(frame, (x1, y1), (x2, y2), rect_color, 2)
-                label_size, _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2)
+                label_size, _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 2)
                 label_y = y1 - 15 if y1 - 15 > 15 else y1 + 15
                 cv2.rectangle(frame, (x1, label_y - label_size[1] - 5), (x1 + label_size[0], label_y + 5), rect_color, cv2.FILLED)
-                cv2.putText(frame, label, (x1, label_y), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+                cv2.putText(frame, label, (x1, label_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
     info_text = f"Cars: {car_count}"
-    cv2.putText(frame, info_text, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 3)
-    cv2.putText(frame, info_text, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+    cv2.putText(frame, info_text, (180, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 3)
+    cv2.putText(frame, info_text, (180, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 0), 2)
 
     return frame, {'total': car_count, 'predictions': predictions}
 
 
 def to_pil_image(bgr_img):
-    rgb = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2RGB)
+    rgb = cv2.cvtColor(bgr_img, cv2.COLOR_BGR2RGB)  
     return Image.fromarray(rgb)
 
 
