@@ -49,15 +49,6 @@ The final output clearly displays the detected cars with colored bounding boxes 
 - **Classes Detected**: Includes 'car' class among others
 - **Color Classification Method**: HSV color space thresholding for blue color detection (threshold: 15% blue pixels)
 
-## 📊 Evaluation Metrics
-
-Since the model uses a pre-trained YOLOv8n for detection and a rule-based approach for color classification, evaluation is based on detection accuracy and color classification accuracy.
-
-### Color Classification Metrics (on sample data):
-here is classification report:
-
-![report](/evaluation%20result/classifiication_report.png)
-
 ## 🚀 How to Run the Project
 ### Clone the Repository:
 ```bash
@@ -72,7 +63,7 @@ pip install -r requirements.txt
 ```
 ### Run the Application:
 ```bash
-python main_app.py
+python app.py
 ```
 
 ### Run Evaluation:
@@ -80,14 +71,14 @@ To evaluate the model on sample data, generate classification report, and save p
 ```bash
 python evaluate.py
 ```
-The evaluation results, including processed images and classification report, will be saved in the `evaluation/` folder.
+The evaluation results, including processed images and classification report, will be saved in the `evaluation_results/` folder.
 
 ## 📁 Project Structure
 ```
 .
 ├── sample_data/          # Folder containing sample images for testing
-├── evaluation/           # Folder where evaluation results are saved (processed images and reports)
-├── main_app.py           # The main GUI application script using Tkinter
+├── evaluation_results/   # Folder where evaluation results are saved (processed images and reports)
+├── app.py                # The main GUI application script using Tkinter
 ├── evaluate.py           # Script for model evaluation report
 ├── yolov8n.pt            # Pre-trained YOLOv8n model for object detection
 ├── requirements.txt      # List of Python dependencies for the project
