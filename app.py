@@ -1,6 +1,17 @@
 import streamlit as st
 from PIL import Image
-import cv2
+import traceback
+
+# Import OpenCV with graceful fallback so the Streamlit UI can show
+# a helpful error message if the environment is missing system libs
+try:
+    import cv2
+    cv2_available = True
+    cv2_import_error = None
+except Exception:
+    cv2 = None
+    cv2_available = False
+    cv2_import_error = traceback.format_exc()
 import numpy as np
 import os
 from ultralytics import YOLO
@@ -68,6 +79,17 @@ def main():
     st.title('🚗🔵Car Color Detector & Counter🔵🚗')
 
     model = load_model()
+
+    # If cv2 failed to import, show a helpful message and stop early
+    if not cv2_available:
+        st.error('OpenCV failed to import in this environment. The app requires OpenCV for detection/annotation.')
+        st.markdown('**Common fixes:**')
+        st.markdown('- Use `opencv-python-headless` (recommended for server / Streamlit Cloud).')
+        st.markdown("- On Linux systems install missing system libraries: `sudo apt-get update && sudo apt-get install -y libgl1-mesa-glx libglib2.0-0`.")
+        st.markdown('- Reinstall Python packages: `pip install -r requirements.txt --upgrade --force-reinstall`')
+        with st.expander('OpenCV import traceback'):
+            st.code(cv2_import_error)
+        return
 
     # Sidebar controls
     st.sidebar.header('Input')
