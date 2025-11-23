@@ -34,12 +34,11 @@ The final output clearly displays the detected cars with colored bounding boxes 
 ![classreport](/classificationreport.png)
 
 #### Sample data->
-![Sample data](sample_data/3079.jpg)
+![Sample data](sample_data/1511.jpg)
 #### GUI->
-![GUI](gui/gui.png)
+![GUI](gui.png)
 #### Result->
-![result](/evaluation%20result/eval_7.jpg)
-![result](/evaluation%20result/eval_9.jpg)
+![result](/result.png)
 
 ## 🤖 Model Details
 
