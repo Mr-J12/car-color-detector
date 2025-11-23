@@ -63,7 +63,7 @@ pip install -r requirements.txt
 ```
 ### Run the Application:
 ```bash
-python app.py
+streamlit run app.py
 ```
 
 ### Run Evaluation:
