@@ -29,9 +29,12 @@ The application is built with Tkinter, Python's standard GUI library. It provide
 
 ### Results & Visualizations:
 The final output clearly displays the detected cars with colored bounding boxes and labels indicating their color classification, along with a total car count in the top-left corner.
+ 
+#### Classification Report->
+![classreport](/classificationreport.png)
 
 #### Sample data->
-![Sample data](sample_data/7.jpg)
+![Sample data](sample_data/3079.jpg)
 #### GUI->
 ![GUI](gui/gui.png)
 #### Result->

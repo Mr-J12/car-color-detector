@@ -2,8 +2,7 @@ import os
 import cv2
 import numpy as np
 from ultralytics import YOLO
-from sklearn.metrics import classification_report, confusion_matrix
-import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
 
 # Load the pre-trained YOLOv8 model
 model = YOLO('yolov8n.pt')
@@ -116,42 +115,13 @@ def main():
 
     # Generate classification report
     if all_true and all_predictions:
-        labels = ['other', 'blue']
-        # Use labels and zero_division to avoid missing-class errors when one class is absent
-        report = classification_report(all_true, all_predictions, labels=labels, target_names=labels, zero_division=0)
+        report = classification_report(all_true, all_predictions, target_names=['other', 'blue'])
         print("\nClassification Report:")
         print(report)
 
         # Save report to file
         with open(os.path.join(evaluation_dir, 'classification_report.txt'), 'w') as f:
             f.write(report)
-
-        # Confusion matrix (ensure order matches labels)
-        cm = confusion_matrix(all_true, all_predictions, labels=labels)
-
-        # Plot and save confusion matrix
-        fig, ax = plt.subplots(figsize=(5, 4))
-        im = ax.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
-        ax.figure.colorbar(im, ax=ax)
-        # We want to show all ticks and label them with the respective list
-        ax.set(xticks=np.arange(cm.shape[1]), yticks=np.arange(cm.shape[0]),
-               xticklabels=labels, yticklabels=labels,
-               ylabel='True label', xlabel='Predicted label', title='Confusion Matrix')
-
-        # Rotate the tick labels and set their alignment.
-        plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-
-        # Loop over data dimensions and create text annotations.
-        thresh = cm.max() / 2. if cm.size else 0
-        for i in range(cm.shape[0]):
-            for j in range(cm.shape[1]):
-                ax.text(j, i, format(cm[i, j], 'd'), ha="center", va="center",
-                        color="white" if cm[i, j] > thresh else "black")
-
-        fig.tight_layout()
-        cm_path = os.path.join(evaluation_dir, 'confusion_matrix.png')
-        fig.savefig(cm_path, bbox_inches='tight')
-        plt.close(fig)
     else:
         print("No data for classification report.")
 

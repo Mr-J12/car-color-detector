@@ -2,3 +2,5 @@ ultralytics
 opencv-python
 Pillow
 scikit-learn
+streamlit
+matplotlib
