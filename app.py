@@ -14,12 +14,25 @@ except Exception:
     cv2_import_error = traceback.format_exc()
 import numpy as np
 import os
-from ultralytics import YOLO
 import io
 
 @st.cache_resource
 def load_model(path='yolov8n.pt'):
-    return YOLO(path)
+    try:
+        # Import YOLO lazily so we can handle environments where
+        # OpenCV / system GL libs are missing and avoid hard crash
+        from ultralytics import YOLO
+    except Exception as e:
+        st.error('Failed to import `ultralytics` / `YOLO` in this environment:')
+        st.error(str(e))
+        return None
+
+    try:
+        return YOLO(path)
+    except Exception as e:
+        st.error('Failed to load the YOLO model:')
+        st.error(str(e))
+        return None
 
 
 def get_car_color(car_image, lower_blue=np.array([100, 50, 50]), upper_blue=np.array([140, 255, 255]), threshold=0.15):
@@ -79,6 +92,10 @@ def main():
     st.title('Car Color Detector & Counter')
 
     model = load_model()
+
+    if model is None:
+        st.error('Model failed to load. See the messages above for details.')
+        return
 
     # If cv2 failed to import, show a helpful message and stop early
     if not cv2_available:
