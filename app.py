@@ -1,3 +1,9 @@
+import os
+import sys
+# Workaround for PyTorch class loading issue in deployment environments
+os.environ['TORCH_HOME'] = '/tmp/torch'
+os.environ['PYTHONHASHSEED'] = '0'
+
 import streamlit as st
 from PIL import Image
 import traceback
@@ -13,7 +19,6 @@ except Exception:
     cv2_available = False
     cv2_import_error = traceback.format_exc()
 import numpy as np
-import os
 import io
 
 @st.cache_resource

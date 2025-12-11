@@ -1,6 +1,8 @@
-ultralytics
-opencv-python-headless
-Pillow
+ultralytics==8.0.196
+opencv-python-headless==4.8.1.78
+torch==2.0.1
+torchvision==0.15.2
+Pillow>=9.0.0
 scikit-learn
-streamlit
+streamlit>=1.28.0
 matplotlib
